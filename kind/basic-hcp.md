@@ -1,6 +1,7 @@
 # Create a Kind cluster
+```
 kind create cluster
-
+```
 # Install cert-manager
 ```
 helm repo add jetstack https://charts.jetstack.io
@@ -18,6 +19,8 @@ helm install \
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.7/config/manifests/metallb-native.yaml
 
 GW_IP=$(docker network inspect -f '{{range .IPAM.Config}}{{.Gateway}}{{end}}' kind)
+
+# Get first two block from IP addressw
 NET_IP=$(echo ${GW_IP} | sed -E 's|^([0-9]+\.[0-9]+)\..*$|\1|g')
 ```
 
